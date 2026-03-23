@@ -34,3 +34,10 @@ volumes:
 
 
 # docker compose describes external dependencies: it does not make dockerfile redundant.
+"""
+docker compose up -d
+docker compose stop # only stops the container, keeps the network, voulumes (dbs). Use when pausing work.
+docker compose down # clean shutdown
+docker compose down -v # reset database - deletes and resets everything!
+docker volume ls # check which volumes exist
+"""
