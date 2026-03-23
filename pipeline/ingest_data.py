@@ -110,7 +110,6 @@ docker run -it \
   -p 5432:5432 \
   --network=pg-network \
   --name pgdatabase \
-  --network=pg-network \
   postgres:18
 
 # In another terminal, run pgAdmin on the same network
@@ -121,7 +120,6 @@ docker run -it \
   -p 8085:80 \
   --network=pg-network \
   --name pgadmin \
-  --network=pg-network \
   dpage/pgadmin4
 
     """
