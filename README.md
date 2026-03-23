@@ -96,3 +96,11 @@ uv run python pipeline.py 12 # 12th month
 
 # run docker container. Use "--rm" to clean up remaining files.
 docker run -it --entrypoint=bash --rm  test:pandas
+
+# add postgres cli to interact with dev environment
+pgcli runs inside venv inside local computer
+
+#uv run pgcli -h localhost -p 5432 -u root -d ny_taxi # connects to the docker container in turn
+
+# run jupyter notebook with uv
+uv run jupyter notebook
