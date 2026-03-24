@@ -1,10 +1,23 @@
 import pandas as pd
+from sqlalchemy import create_engine
+# docker compose up -d
+# docker ps
 
+
+# --- connection ---
+engine = create_engine("postgresql://root:root@localhost:5432/ny_taxi")
+
+# --- load parquet and push to postgres ---
 pq_data = pd.read_parquet("/workspaces/data-engineering-zoomcamp/green_tripdata_2025-11.parquet")
-print("Parquet file read successfully!")
+pq_data.to_sql("green_taxi_trips", con=engine, if_exists="replace", index=False)
+print("green_taxi_trips loaded")
 
-print(pq_data.head())
-print(pq_data.dtypes)
+# --- load csv and push to postgres ---
+zones = pd.read_csv("/workspaces/data-engineering-zoomcamp/taxi_zone_lookup.csv")
+zones.to_sql("taxi_zones", con=engine, if_exists="replace", index=False)
+print("taxi_zones loaded")
+
+
 
 # filter for trips with trips of lpep_pickup_datetime between 2025-11-01 and 2025-12-01 excluding 2025-12-01 how many trips had a trip_distance less htan or equal to 1 mile?
 filtered_data = pq_data[
@@ -32,7 +45,7 @@ pickup_zone_totals = filtered_data.groupby("PULocationID")["total_amount"].sum()
 biggest_pickup_zone = pickup_zone_totals.idxmax()
 # print the PULocationID of the biggest pickup zone
 print(f"Biggest pickup zone on 18th November 2025 (PULocationID): {biggest_pickup_zone}")
---> 74
+# --> 74
 
 
 # cross reference the biggest pickup zone with the taxi zone lookup file to get the name of the zone
