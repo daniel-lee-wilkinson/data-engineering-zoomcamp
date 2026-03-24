@@ -136,6 +136,8 @@ LIMIT 1;
 
 ANS = Yorkville West
 
+![pgAdmin SQL result showing largest tip by dropoff zone](images/pgadmin_query.png)
+
 # QUESTION 7: Terraform Workflow
 
 ```python
