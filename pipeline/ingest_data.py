@@ -90,9 +90,9 @@ uv run python ingest_data.py \
   --pg-host=localhost \
   --pg-port=5432 \
   --pg-db=ny_taxi \
-  --target-table=yellow_taxi_trips_2021_1 \
-  --year=2021 \
-  --month=1 \
+  --target-table=yellow_taxi_trips_2025_11 \
+  --year=2025 \
+  --month=11 \
   --chunksize=100000
 """
 
@@ -135,8 +135,8 @@ docker run -it \
     --pg-host=pgdatabase \
     --pg-port=5432 \
     --pg-db=ny_taxi \
-    --target-table=yellow_taxi_trips_2021_1 \
-    --year=2021 \
-    --month=1 \
+    --target-table=yellow_taxi_trips_2025_11 \
+    --year=2025 \
+    --month=11 \
     --chunksize=100000
 """
